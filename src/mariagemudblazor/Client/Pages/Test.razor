@@ -1,6 +1,8 @@
 ﻿@page "/test"
 @inject HttpClient Http
 @using MariageMudblazor.Shared
+@using MariageClient
+@inject MariageClient MariageClient
 
 <PageTitle>Test</PageTitle>
 
@@ -34,5 +36,6 @@ else
     protected override async Task OnInitializedAsync()
     {
         invites = await Http.GetFromJsonAsync<Invite[]>("Test");
+        var result=await MariageClient.Getinvites.ExecuteAsync();
     }
 }

@@ -1,0 +1,9 @@
+query getinvites {
+  Invite {
+    id
+    mail
+    nom
+    prenom
+    presence
+  }
+}
