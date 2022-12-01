@@ -1,0 +1,57 @@
+﻿@page "/counter"
+
+<MudTabs Elevation="1" Rounded="true" PanelClass="pa-6">
+    <MudTabPanel Text="Invités" ToolTip="ToolTip One">
+
+        <MudText>
+            
+            
+          <MudText Align="Align.Center"><MudText Typo="Typo.h2"><b>NOMBRE ET TYPE D'INVITÉ</b></MudText> </MudText><br>
+
+
+<MudText Typo="Typo.h3">Famille</MudText>   <MudNumericField @bind-Value="IntValue" Label="" Variant="Variant.Text" Min="0" Max="1000" />
+<MudText Typo="Typo.h3">Témoins</MudText>   <MudNumericField @bind-Value="IntValue1" Label="" Variant="Variant.Text" Min="0" Max="1000" />
+<MudText Typo="Typo.h3">Amis</MudText>      <MudNumericField @bind-Value="IntValue2" Label="" Variant="Variant.Text" Min="0" Max="1000" />
+<MudText Typo="Typo.h3">Enfants</MudText>   <MudNumericField @bind-Value="IntValue3" Label="" Variant="Variant.Text" Min="0" Max="1000" />
+<MudText Typo="Typo.h3">Autre</MudText>     <MudNumericField @bind-Value="IntValue4" Label="" Variant="Variant.Text" Min="0" Max="1000" />
+
+@code {
+    public int IntValue { get; set; }
+    public int IntValue1 { get; set; }
+    public int IntValue2 { get; set; }
+    public int IntValue3 { get; set; }
+    public int IntValue4 { get; set; }
+
+}
+            
+                      
+            </MudText>
+    </MudTabPanel>
+    <MudTabPanel Text="Item Two" ToolTip="ToolTip Two">
+        <MudText>
+            
+            
+         
+           <PageTitle>Counter</PageTitle>
+
+<MudText Typo="Typo.h3" GutterBottom="true">test2</MudText>
+<MudText Class="mb-4">Current count: @currentCount</MudText>
+<MudButton Color="Color.Primary" Variant="Variant.Filled" @onclick="IncrementCount">Click me</MudButton> 
+            
+            
+            </MudText>
+    </MudTabPanel>
+    <MudTabPanel Text="Item Three" ToolTip="ToolTip Three">
+        <MudText>Item Three</MudText>
+    </MudTabPanel>
+</MudTabs>
+
+
+@code {
+    private int currentCount = 0;
+
+    private void IncrementCount()
+    {
+        currentCount++;
+    }
+}

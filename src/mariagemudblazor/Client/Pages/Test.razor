@@ -1,0 +1,38 @@
+﻿@page "/test"
+@inject HttpClient Http
+@using MariageMudblazor.Shared
+
+<PageTitle>Test</PageTitle>
+
+
+@if (invites == null)
+{
+    <MudProgressCircular Color="Color.Default" Indeterminate="true" />
+}
+else
+{
+    <MudTable Items="invites" Hover="true" SortLabel="Sort By" Elevation="0">
+        <HeaderContent>
+            <MudTh><MudTableSortLabel SortBy="new Func<Invite, object>(x=>x.Nom)">Nom</MudTableSortLabel></MudTh>
+            <MudTh><MudTableSortLabel SortBy="new Func<Invite, object>(x=>x.Prenom!)">Prenom</MudTableSortLabel></MudTh>
+        </HeaderContent>
+        <RowTemplate>
+            <MudTd DataLabel="Nom">@context.Nom</MudTd>
+            <MudTd DataLabel="Prenom">@context.Prenom</MudTd>
+
+        </RowTemplate>
+        <PagerContent>
+            <MudTablePager PageSizeOptions="new int[]{50, 100}" />
+        </PagerContent>
+    </MudTable>
+}
+
+
+@code {
+    private Invite[]? invites;
+
+    protected override async Task OnInitializedAsync()
+    {
+        invites = await Http.GetFromJsonAsync<Invite[]>("Test");
+    }
+}
